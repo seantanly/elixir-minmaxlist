@@ -4,6 +4,8 @@ defmodule Minmaxlist do
 
       iex> [1, 2, 3, 4, 5, 6] |> Minmaxlist.min_list_by(&(rem(&1,3)))
       [3, 6]
+      iex> [] |> Minmaxlist.min_list_by(&(rem(&1,3)))
+      []
   """
   def min_list_by(collection, fun) do
     result = collection |> Enum.reduce(:first, fn
@@ -29,6 +31,8 @@ defmodule Minmaxlist do
 
       iex> [1, 2, 3, 4, 5, 6] |> Minmaxlist.max_list_by(&(rem(&1,3)))
       [2, 5]
+      iex> [] |> Minmaxlist.max_list_by(&(rem(&1,3)))
+      []
   """
   def max_list_by(collection, fun) do
     result = collection |> Enum.reduce(:first, fn
@@ -54,6 +58,8 @@ defmodule Minmaxlist do
 
       iex> [1, 2, 3, 4, 5, 6] |> Minmaxlist.min_max_list_by(&(rem(&1,3)))
       {[3, 6], [2, 5]}
+      iex> [] |> Minmaxlist.min_max_list_by(&(rem(&1,3)))
+      {[], []}
   """
   def min_max_list_by(collection, fun) do
     result = collection |> Enum.reduce(:first, fn
@@ -75,7 +81,7 @@ defmodule Minmaxlist do
         {acc_min, acc_max}
     end)
     case result do
-      :first -> []
+      :first -> {[], []}
       {result_min, result_max} -> {result_min |> elem(0) |> Enum.reverse, result_max |> elem(0) |> Enum.reverse}
     end
   end
