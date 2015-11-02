@@ -2,30 +2,24 @@ defmodule MinmaxlistTest do
   use ExUnit.Case
   doctest Minmaxlist
 
-  import Minmaxlist
 
   test "min list by" do
-    result = [1, 2, 3, 4, 5, 6] |> Minmaxlist.min_list_by(&(rem(&1,3)))
-    assert result == [3, 6]
-    result = [] |> min_list_by(&(rem(&1,3)))
-    assert result  == []
+    assert Minmaxlist.min_list_by([1, 2, 3, 4, 5, 6], fn(x) -> rem(x, 3) end) == [3, 6]
+    assert Minmaxlist.min_list_by([], fn(x) -> rem(x, 3) end) == []
   end
 
   test "max list by" do
-    result = [1, 2, 3, 4, 5, 6] |> Minmaxlist.max_list_by(&(rem(&1,3)))
-    assert result == [2, 5]
-    result = [] |> max_list_by(&(rem(&1,3)))
-    assert result  == []
+    assert Minmaxlist.max_list_by([1, 2, 3, 4, 5, 6], fn(x) -> rem(x, 3) end) == [2, 5]
+    assert Minmaxlist.max_list_by([], fn(x) -> rem(x, 3) end) == []
   end
 
   test "min max list by" do
-    result = [1, 2, 3, 4, 5, 6] |> Minmaxlist.min_max_list_by(&(rem(&1,3)))
-    assert result == {[3, 6], [2, 5]}
-    result = [] |> min_max_list_by(&(rem(&1,3)))
-    assert result  == {[], []}
+    assert Minmaxlist.min_max_list_by([1, 2, 3, 4, 5, 6], fn(x) -> rem(x, 3) end) == {[3, 6], [2, 5]}
+    assert Minmaxlist.min_max_list_by([], fn(x) -> rem(x, 3) end) == {[], []}
   end
 
-  test "the truth" do
+  test "README examples" do
+    import Minmaxlist
     dataset = [
       %{name: "A", age: 24, income: 4000},
       %{name: "B", age: 22, income: 3300},
