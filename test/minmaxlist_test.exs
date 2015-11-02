@@ -4,18 +4,18 @@ defmodule MinmaxlistTest do
 
 
   test "min list by" do
-    assert Minmaxlist.min_list_by([1, 2, 3, 4, 5, 6], fn(x) -> rem(x, 3) end) == [3, 6]
-    assert Minmaxlist.min_list_by([], fn(x) -> rem(x, 3) end) == []
+    assert Minmaxlist.min_list_by(["a", "b", "aa", "bb", "bbb", "aaa"], fn(x) -> String.length(x) end) == ["a", "b"]
+    assert Minmaxlist.min_list_by([], fn(x) -> String.length(x) end) == []
   end
 
   test "max list by" do
-    assert Minmaxlist.max_list_by([1, 2, 3, 4, 5, 6], fn(x) -> rem(x, 3) end) == [2, 5]
-    assert Minmaxlist.max_list_by([], fn(x) -> rem(x, 3) end) == []
+    assert Minmaxlist.max_list_by(["a", "b", "aa", "bb", "bbb", "aaa"], fn(x) -> String.length(x) end) == ["bbb", "aaa"]
+    assert Minmaxlist.max_list_by([], fn(x) -> String.length(x) end) == []
   end
 
   test "min max list by" do
-    assert Minmaxlist.min_max_list_by([1, 2, 3, 4, 5, 6], fn(x) -> rem(x, 3) end) == {[3, 6], [2, 5]}
-    assert Minmaxlist.min_max_list_by([], fn(x) -> rem(x, 3) end) == {[], []}
+    assert Minmaxlist.min_max_list_by(["a", "b", "aa", "bb", "bbb", "aaa"], fn(x) -> String.length(x) end) == {["a", "b"], ["bbb", "aaa"]}
+    assert Minmaxlist.min_max_list_by([], fn(x) -> String.length(x) end) == {[], []}
   end
 
   test "README examples" do

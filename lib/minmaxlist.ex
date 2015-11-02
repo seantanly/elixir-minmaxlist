@@ -10,9 +10,9 @@ defmodule Minmaxlist do
   Returns list of entries that gives the minimum value as calculated by the given function.
   Returns empty list if the collection is empty.
 
-      iex> [1, 2, 3, 4, 5, 6] |> Minmaxlist.min_list_by(&(rem(&1,3)))
-      [3, 6]
-      iex> [] |> Minmaxlist.min_list_by(&(rem(&1,3)))
+      iex> Minmaxlist.min_list_by(["a", "b", "aa", "bb", "bbb", "aaa"], fn(x) -> String.length(x) end)
+      ["a", "b"]
+      iex> Minmaxlist.min_list_by([], fn(x) -> String.length(x) end)
       []
   """
   @spec min_list_by(t, (element -> any)) :: list
@@ -39,9 +39,9 @@ defmodule Minmaxlist do
   Returns list of entries that gives the maximum value as calculated by the given function.
   Returns empty list if the collection is empty.
 
-      iex> [1, 2, 3, 4, 5, 6] |> Minmaxlist.max_list_by(&(rem(&1,3)))
-      [2, 5]
-      iex> [] |> Minmaxlist.max_list_by(&(rem(&1,3)))
+      iex> Minmaxlist.max_list_by(["a", "b", "aa", "bb", "bbb", "aaa"], fn(x) -> String.length(x) end)
+      ["bbb", "aaa"]
+      iex> Minmaxlist.max_list_by([], fn(x) -> String.length(x) end)
       []
   """
   @spec max_list_by(t, (element -> any)) :: list
@@ -68,9 +68,9 @@ defmodule Minmaxlist do
   Returns a tuple with two lists of entries that give minimum & maximum values respectively as calculated by the given function.
   Returns a tuple of two empty lists if the collection is empty.
 
-      iex> [1, 2, 3, 4, 5, 6] |> Minmaxlist.min_max_list_by(&(rem(&1,3)))
-      {[3, 6], [2, 5]}
-      iex> [] |> Minmaxlist.min_max_list_by(&(rem(&1,3)))
+      iex> Minmaxlist.min_max_list_by(["a", "b", "aa", "bb", "bbb", "aaa"], fn(x) -> String.length(x) end)
+      {["a", "b"], ["bbb", "aaa"]}
+      iex> Minmaxlist.min_max_list_by([], fn(x) -> String.length(x) end)
       {[], []}
   """
   @spec min_max_list_by(t, (element -> any)) :: {list, list}
