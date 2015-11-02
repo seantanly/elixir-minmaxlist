@@ -5,8 +5,6 @@ otp_release:
 sudo: false
 before_script:
   - mix deps.get --only test
-script:
-  - mix test
 after_script:
   - cd $TRAVIS_BUILD_DIR
   - mix deps.get --only docs
