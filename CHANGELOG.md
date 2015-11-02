@@ -1,6 +1,11 @@
 Changelog
 ====
 
+## Version 0.0.4 (2015-11-02)
+
+* Update README.md with motivation for this package.
+* Replace doctests and tests with examples to be inline with existing ones used by Enum.
+
 ## Version 0.0.3 (2015-11-02)
 
 * Added typespecs and tidied docs.
