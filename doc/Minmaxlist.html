@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Minmaxlist – Minmaxlist v0.0.4</title>
+    <title>Minmaxlist – Minmaxlist v0.0.5</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.10.0">
     <link rel="stylesheet" href="dist/app.css" />
@@ -28,7 +28,7 @@
         Minmaxlist
       </h1>
       <h2 class="sidebar-projectVersion">
-        v0.0.4
+        v0.0.5
       </h2>
     </div>
     
@@ -63,7 +63,7 @@
         Minmaxlist
         
         
-          <a href="https://github.com/seantanly/elixir-minmaxlist/blob/v0.0.4/lib/minmaxlist.ex#L1" title="View Source" class="view-source" rel="help">
+          <a href="https://github.com/seantanly/elixir-minmaxlist/blob/v0.0.5/lib/minmaxlist.ex#L1" title="View Source" class="view-source" rel="help">
             <i class="icon-code"></i>
           </a>
         
@@ -112,31 +112,28 @@
     </h2>
     <div class="summary-row">
   <div class="summary-signature">
-    <a href="#max_list_by/2">max_list_by(collection, fun)</a>
+    <a href="#max_list_by/2">max_list_by(enumerable, fun)</a>
   </div>
   
-    <div class="summary-synopsis"><p>Returns list of entries that gives the maximum value as calculated by the given function.
-Returns empty list if the collection is empty</p>
+    <div class="summary-synopsis"><p>Returns list of the biggest elements in the enumerable as calculated by the given function</p>
 </div>
   
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#min_list_by/2">min_list_by(collection, fun)</a>
+    <a href="#min_list_by/2">min_list_by(enumerable, fun)</a>
   </div>
   
-    <div class="summary-synopsis"><p>Returns list of entries that gives the minimum value as calculated by the given function.
-Returns empty list if the collection is empty</p>
+    <div class="summary-synopsis"><p>Returns list of the smallest elements in the enumerable as calculated by the given function</p>
 </div>
   
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#min_max_list_by/2">min_max_list_by(collection, fun)</a>
+    <a href="#min_max_list_by/2">min_max_list_by(enumerable, fun)</a>
   </div>
   
-    <div class="summary-synopsis"><p>Returns a tuple with two lists of entries that give minimum &amp; maximum values respectively as calculated by the given function.
-Returns a tuple of two empty lists if the collection is empty</p>
+    <div class="summary-synopsis"><p>Returns a tuple with list of smallest elements and list of biggest elements in the enumerable as calculated by the given function</p>
 </div>
   
 </div>
@@ -186,9 +183,9 @@ Returns a tuple of two empty lists if the collection is empty</p>
     <a href="#max_list_by/2" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>
     </a>
-    <span class="signature">max_list_by(collection, fun)</span>
+    <span class="signature">max_list_by(enumerable, fun)</span>
       
-      <a href="https://github.com/seantanly/elixir-minmaxlist/blob/v0.0.4/lib/minmaxlist.ex#L48" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/seantanly/elixir-minmaxlist/blob/v0.0.5/lib/minmaxlist.ex#L26" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -204,10 +201,12 @@ Returns a tuple of two empty lists if the collection is empty</p>
     </div>
   
   <section class="docstring">
-    <p>Returns list of entries that gives the maximum value as calculated by the given function.
-Returns empty list if the collection is empty.</p>
+    <p>Returns list of the biggest elements in the enumerable as calculated by the given function.</p>
+<p>Returns empty list if the enumerable is empty.</p>
+<h2>Examples</h2>
 <pre><code class="iex elixir">iex&gt; Minmaxlist.max_list_by([&quot;a&quot;, &quot;b&quot;, &quot;aa&quot;, &quot;bb&quot;, &quot;bbb&quot;, &quot;aaa&quot;], fn(x) -&gt; String.length(x) end)
 [&quot;bbb&quot;, &quot;aaa&quot;]
+
 iex&gt; Minmaxlist.max_list_by([], fn(x) -&gt; String.length(x) end)
 []</code></pre>
 
@@ -218,9 +217,9 @@ iex&gt; Minmaxlist.max_list_by([], fn(x) -&gt; String.length(x) end)
     <a href="#min_list_by/2" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>
     </a>
-    <span class="signature">min_list_by(collection, fun)</span>
+    <span class="signature">min_list_by(enumerable, fun)</span>
       
-      <a href="https://github.com/seantanly/elixir-minmaxlist/blob/v0.0.4/lib/minmaxlist.ex#L19" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/seantanly/elixir-minmaxlist/blob/v0.0.5/lib/minmaxlist.ex#L60" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -236,10 +235,12 @@ iex&gt; Minmaxlist.max_list_by([], fn(x) -&gt; String.length(x) end)
     </div>
   
   <section class="docstring">
-    <p>Returns list of entries that gives the minimum value as calculated by the given function.
-Returns empty list if the collection is empty.</p>
+    <p>Returns list of the smallest elements in the enumerable as calculated by the given function.</p>
+<p>Returns empty list if the enumerable is empty.</p>
+<h2>Examples</h2>
 <pre><code class="iex elixir">iex&gt; Minmaxlist.min_list_by([&quot;a&quot;, &quot;b&quot;, &quot;aa&quot;, &quot;bb&quot;, &quot;bbb&quot;, &quot;aaa&quot;], fn(x) -&gt; String.length(x) end)
 [&quot;a&quot;, &quot;b&quot;]
+
 iex&gt; Minmaxlist.min_list_by([], fn(x) -&gt; String.length(x) end)
 []</code></pre>
 
@@ -250,9 +251,9 @@ iex&gt; Minmaxlist.min_list_by([], fn(x) -&gt; String.length(x) end)
     <a href="#min_max_list_by/2" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>
     </a>
-    <span class="signature">min_max_list_by(collection, fun)</span>
+    <span class="signature">min_max_list_by(enumerable, fun)</span>
       
-      <a href="https://github.com/seantanly/elixir-minmaxlist/blob/v0.0.4/lib/minmaxlist.ex#L77" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/seantanly/elixir-minmaxlist/blob/v0.0.5/lib/minmaxlist.ex#L94" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -268,10 +269,12 @@ iex&gt; Minmaxlist.min_list_by([], fn(x) -&gt; String.length(x) end)
     </div>
   
   <section class="docstring">
-    <p>Returns a tuple with two lists of entries that give minimum &amp; maximum values respectively as calculated by the given function.
-Returns a tuple of two empty lists if the collection is empty.</p>
+    <p>Returns a tuple with list of smallest elements and list of biggest elements in the enumerable as calculated by the given function.</p>
+<p>Returns a tuple of two empty lists if the enumerable is empty.</p>
+<h2>Examples</h2>
 <pre><code class="iex elixir">iex&gt; Minmaxlist.min_max_list_by([&quot;a&quot;, &quot;b&quot;, &quot;aa&quot;, &quot;bb&quot;, &quot;bbb&quot;, &quot;aaa&quot;], fn(x) -&gt; String.length(x) end)
 {[&quot;a&quot;, &quot;b&quot;], [&quot;bbb&quot;, &quot;aaa&quot;]}
+
 iex&gt; Minmaxlist.min_max_list_by([], fn(x) -&gt; String.length(x) end)
 {[], []}</code></pre>
 

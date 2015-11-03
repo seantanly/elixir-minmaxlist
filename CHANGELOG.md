@@ -1,6 +1,10 @@
 Changelog
 ====
 
+## Version 0.0.5 (2015-11-03)
+
+* Update code/doc style to follow Elixir master.
+
 ## Version 0.0.4 (2015-11-02)
 
 * Update README.md with motivation for this package.
