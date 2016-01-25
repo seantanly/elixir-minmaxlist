@@ -26,7 +26,7 @@ end
 
 ## Examples
 
-Minmaxlist is designed to assist in filtering result sets by min/max value while returning list of results that matches the requirement. This is especially useful for example, 
+Minmaxlist is designed to assist in filtering result sets by min/max value while returning list of results that matches the requirement. This is especially useful for example,
 
 
 Find the youngest people with highest income.
@@ -57,10 +57,13 @@ import Minmaxlist
   %{name: "E", age: 22, income: 3300},
   %{name: "F", age: 25, income: 5500},
   %{name: "G", age: 24, income: 4500},
-] |> min_max_list_by(&(&1.age)) 
+] |> min_max_list_by(&(&1.age))
 # => {
 #   [%{name: "B", age: 22, income: 3300}, %{name: "C", age: 22, income: 2800}, %{name: "E", age: 22, income: 3300}],
 #   [%{name: "D", age: 25, income: 5000}, %{name: "F", age: 25, income: 5500}]
 # }
 ```
 
+## LICENSE
+
+This software is licensed under [MIT License](LICENSE.md).
