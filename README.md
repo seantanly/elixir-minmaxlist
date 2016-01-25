@@ -5,7 +5,7 @@ Minmaxlist
 
 Elixir library extending `Enum.min_by/2`, `Enum.max_by/2` and `Enum.min_max_by/2` to return a list of results instead of just one.
 
-This enables searching for all matching results based multiple min/max value criteria. See [Examples](#Examples).
+This enables searching for all matching results based multiple min/max value criteria. See [Examples](#examples).
 
 
 ## Documentation
