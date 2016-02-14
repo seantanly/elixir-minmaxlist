@@ -96,7 +96,7 @@ defmodule Minmaxlist do
       entry, :first ->
         fun_entry = fun.(entry)
         {{[entry], fun_entry}, {[entry], fun_entry}}
-      entry, {acc_min={acc_min_entries, acc_min_fun_entry}, acc_max={acc_max_entries, acc_max_fun_entry}} ->
+      entry, {{acc_min_entries, acc_min_fun_entry} = acc_min, {acc_max_entries, acc_max_fun_entry} = acc_max} ->
         fun_entry = fun.(entry)
         acc_min = cond do
           fun_entry == acc_min_fun_entry -> {[entry|acc_min_entries], fun_entry}
