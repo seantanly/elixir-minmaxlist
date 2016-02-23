@@ -22,7 +22,7 @@ defmodule Minmaxlist do
       []
 
   """
-  @spec max_list_by(t, (element -> any)) :: list
+  @spec max_list_by(t, (element -> any)) :: [element]
   def max_list_by(enumerable, fun) do
     result = enumerable |> reduce(:first, fn
       entry, :first ->
@@ -56,7 +56,7 @@ defmodule Minmaxlist do
       []
 
   """
-  @spec min_list_by(t, (element -> any)) :: list
+  @spec min_list_by(t, (element -> any)) :: [element]
   def min_list_by(enumerable, fun) do
     result = enumerable |> reduce(:first, fn
       entry, :first ->
@@ -90,7 +90,7 @@ defmodule Minmaxlist do
       {[], []}
 
   """
-  @spec min_max_list_by(t, (element -> any)) :: {list, list}
+  @spec min_max_list_by(t, (element -> any)) :: {[element], [element]}
   def min_max_list_by(enumerable, fun) do
     result = enumerable |> reduce(:first, fn
       entry, :first ->

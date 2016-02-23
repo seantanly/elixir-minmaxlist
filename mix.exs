@@ -29,6 +29,7 @@ defmodule Minmaxlist.Mixfile do
   defp deps do
     [
       {:credo, ">= 0.0.0", only: [:dev, :test]},
+      {:dialyxir, "~> 0.3", only: [:dev]},
       {:earmark, ">= 0.2.1", only: :docs},
       {:ex_doc, ">= 0.0.0", only: :docs},
     ]
