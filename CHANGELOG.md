@@ -1,6 +1,12 @@
 Changelog
 ====
 
+## Version 0.0.7 (2017-01-06)
+
+* Silence warnings for Elixir v1.4.
+* Update generated docs using ex_doc v0.14.5.
+
+
 ## Version 0.0.6 (2016-02-23)
 
 * Updated typespec support for Dialyzer.
