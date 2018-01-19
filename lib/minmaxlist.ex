@@ -5,8 +5,8 @@ defmodule Minmaxlist do
 
   import Enum, only: [reduce: 3]
 
-  @type t :: Enumerable.t
-  @type element:: any
+  @type t :: Enumerable.t()
+  @type element :: any
 
   @doc """
   Returns list of the biggest elements in the enumerable as calculated by the given function.
@@ -24,21 +24,26 @@ defmodule Minmaxlist do
   """
   @spec max_list_by(t, (element -> any)) :: [element]
   def max_list_by(enumerable, fun) do
-    result = enumerable |> reduce(:first, fn
-      entry, :first ->
-        fun_entry = fun.(entry)
-        {[entry], fun_entry}
-      entry, {acc_entries, acc_fun_entry} ->
-        fun_entry = fun.(entry)
-        cond do
-          fun_entry == acc_fun_entry -> {[entry|acc_entries], fun_entry}
-          fun_entry > acc_fun_entry -> {[entry], fun_entry}
-          true -> {acc_entries, acc_fun_entry}
-        end
-    end)
+    result =
+      enumerable
+      |> reduce(:first, fn
+        entry, :first ->
+          fun_entry = fun.(entry)
+          {[entry], fun_entry}
+
+        entry, {acc_entries, acc_fun_entry} ->
+          fun_entry = fun.(entry)
+
+          cond do
+            fun_entry == acc_fun_entry -> {[entry | acc_entries], fun_entry}
+            fun_entry > acc_fun_entry -> {[entry], fun_entry}
+            true -> {acc_entries, acc_fun_entry}
+          end
+      end)
+
     case result do
       :first -> []
-      _ -> result |> elem(0) |> :lists.reverse
+      _ -> result |> elem(0) |> :lists.reverse()
     end
   end
 
@@ -58,21 +63,26 @@ defmodule Minmaxlist do
   """
   @spec min_list_by(t, (element -> any)) :: [element]
   def min_list_by(enumerable, fun) do
-    result = enumerable |> reduce(:first, fn
-      entry, :first ->
-        fun_entry = fun.(entry)
-        {[entry], fun_entry}
-      entry, {acc_entries, acc_fun_entry} ->
-        fun_entry = fun.(entry)
-        cond do
-          fun_entry == acc_fun_entry -> {[entry|acc_entries], fun_entry}
-          fun_entry < acc_fun_entry -> {[entry], fun_entry}
-          true -> {acc_entries, acc_fun_entry}
-        end
-    end)
+    result =
+      enumerable
+      |> reduce(:first, fn
+        entry, :first ->
+          fun_entry = fun.(entry)
+          {[entry], fun_entry}
+
+        entry, {acc_entries, acc_fun_entry} ->
+          fun_entry = fun.(entry)
+
+          cond do
+            fun_entry == acc_fun_entry -> {[entry | acc_entries], fun_entry}
+            fun_entry < acc_fun_entry -> {[entry], fun_entry}
+            true -> {acc_entries, acc_fun_entry}
+          end
+      end)
+
     case result do
       :first -> []
-      _ -> result |> elem(0) |> :lists.reverse
+      _ -> result |> elem(0) |> :lists.reverse()
     end
   end
 
@@ -92,28 +102,41 @@ defmodule Minmaxlist do
   """
   @spec min_max_list_by(t, (element -> any)) :: {[element], [element]}
   def min_max_list_by(enumerable, fun) do
-    result = enumerable |> reduce(:first, fn
-      entry, :first ->
-        fun_entry = fun.(entry)
-        {{[entry], fun_entry}, {[entry], fun_entry}}
-      entry, {{acc_min_entries, acc_min_fun_entry} = acc_min, {acc_max_entries, acc_max_fun_entry} = acc_max} ->
-        fun_entry = fun.(entry)
-        acc_min = cond do
-          fun_entry == acc_min_fun_entry -> {[entry|acc_min_entries], fun_entry}
-          fun_entry < acc_min_fun_entry -> {[entry], fun_entry}
-          true -> acc_min
-        end
-        acc_max = cond do
-          fun_entry == acc_max_fun_entry -> {[entry|acc_max_entries], fun_entry}
-          fun_entry > acc_max_fun_entry -> {[entry], fun_entry}
-          true -> acc_max
-        end
-        {acc_min, acc_max}
-    end)
+    result =
+      enumerable
+      |> reduce(:first, fn
+        entry, :first ->
+          fun_entry = fun.(entry)
+          {{[entry], fun_entry}, {[entry], fun_entry}}
+
+        entry,
+        {{acc_min_entries, acc_min_fun_entry} = acc_min,
+         {acc_max_entries, acc_max_fun_entry} = acc_max} ->
+          fun_entry = fun.(entry)
+
+          acc_min =
+            cond do
+              fun_entry == acc_min_fun_entry -> {[entry | acc_min_entries], fun_entry}
+              fun_entry < acc_min_fun_entry -> {[entry], fun_entry}
+              true -> acc_min
+            end
+
+          acc_max =
+            cond do
+              fun_entry == acc_max_fun_entry -> {[entry | acc_max_entries], fun_entry}
+              fun_entry > acc_max_fun_entry -> {[entry], fun_entry}
+              true -> acc_max
+            end
+
+          {acc_min, acc_max}
+      end)
+
     case result do
-      :first -> {[], []}
-      {result_min, result_max} -> {result_min |> elem(0) |> :lists.reverse, result_max |> elem(0) |> :lists.reverse}
+      :first ->
+        {[], []}
+
+      {result_min, result_max} ->
+        {result_min |> elem(0) |> :lists.reverse(), result_max |> elem(0) |> :lists.reverse()}
     end
   end
-
 end

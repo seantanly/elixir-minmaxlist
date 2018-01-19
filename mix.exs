@@ -8,8 +8,8 @@ defmodule Minmaxlist.Mixfile do
       app: :minmaxlist,
       version: @version,
       elixir: "~> 1.1",
-      build_embedded: Mix.env == :prod,
-      start_permanent: Mix.env == :prod,
+      build_embedded: Mix.env() == :prod,
+      start_permanent: Mix.env() == :prod,
       deps: deps(),
       package: package(),
       name: "Minmaxlist",
@@ -18,7 +18,7 @@ defmodule Minmaxlist.Mixfile do
       description: """
       Elixir library extending `Enum.min_by/2`, `Enum.max_by/2` and `Enum.min_max_by/2` to return a list of results instead of just one.
       """,
-      docs: docs(),
+      docs: docs()
     ]
   end
 
@@ -30,7 +30,7 @@ defmodule Minmaxlist.Mixfile do
     [
       {:credo, ">= 0.0.0", only: [:dev, :test]},
       {:dialyxir, "~> 0.5", only: [:dev], runtime: false},
-      {:ex_doc, ">= 0.0.0", only: [:dev], runtime: false},
+      {:ex_doc, ">= 0.0.0", only: [:dev], runtime: false}
     ]
   end
 
@@ -39,8 +39,7 @@ defmodule Minmaxlist.Mixfile do
       maintainers: ["Sean Tan Li Yang"],
       licenses: ["MIT"],
       links: %{github: "https://github.com/seantanly/elixir-minmaxlist"},
-      files: ~w(lib test) ++
-             ~w(CHANGELOG.md LICENSE.md mix.exs README.md),
+      files: ~w(lib test) ++ ~w(mix.exs CHANGELOG.md LICENSE.md README.md)
     ]
   end
 
@@ -49,7 +48,7 @@ defmodule Minmaxlist.Mixfile do
       source_ref: "v#{@version}",
       main: "Minmaxlist",
       # logo: "path/to/logo.png",
-      extras: ~w(CHANGELOG.md README.md LICENSE.md)
+      extras: ~w(CHANGELOG.md LICENSE.md README.md)
     ]
   end
 end
